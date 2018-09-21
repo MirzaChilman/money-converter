@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Utils from '../../../Utils/Utils';
 import { Label, Input } from 'reactstrap';
 import { convertMoney } from '../../../Redux/Actions/currencyActions';
+import Utils from '../../../Utils/Utils';
 class CurrencyHeader extends Component {
   convertPrice = event => {
     this.props.convertMoney(event.target.value);
   };
   render() {
     const { base } = this.props.currencyState;
-    console.log(this.props);
     return (
       <React.Fragment>
         <h3>{`${base}-${Utils.codeToText(base)}`}</h3>
@@ -26,6 +26,11 @@ class CurrencyHeader extends Component {
     );
   }
 }
+
+CurrencyHeader.propTypes = {
+  convertMoney: PropTypes.func.isRequired,
+  currencyState: PropTypes.any,
+};
 
 const mapStateToProps = state => ({
   currencyState: state.currencyData.currencyInfo,

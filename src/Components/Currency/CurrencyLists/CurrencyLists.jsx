@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { fetchData } from '../../../Redux/Actions/currencyActions';
@@ -20,7 +21,7 @@ class CurrencyLists extends Component {
   }
 
   render() {
-    const { rates, base } = this.props.currencyState;
+    const { rates } = this.props.currencyState;
     return (
       <Row className="mb-3">
         {this.state.isLoading ? (
@@ -39,6 +40,11 @@ class CurrencyLists extends Component {
     );
   }
 }
+
+CurrencyLists.propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  currencyState: PropTypes.any,
+};
 
 const mapStateToProps = state => ({
   currencyState: state.currencyData.currencyInfo,

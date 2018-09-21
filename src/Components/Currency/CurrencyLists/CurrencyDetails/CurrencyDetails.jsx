@@ -3,6 +3,7 @@ import {
   Card, CardTitle, CardText, Col,
 } from 'reactstrap';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const CurrencyDetails = (props) => {
   const {
@@ -21,6 +22,14 @@ const CurrencyDetails = (props) => {
     </Col>
   );
 };
+
+CurrencyDetails.propTypes = {
+  currencyCode: PropTypes.string.isRequired,
+  currencyRates: PropTypes.number.isRequired,
+  baseState: PropTypes.string.isRequired,
+  moneyState: PropTypes.number.isRequired,
+};
+
 const mapStateToProps = state => ({
   moneyState: state.currencyData.money,
   baseState: state.currencyData.currencyInfo.base,
