@@ -31,6 +31,9 @@ class CurrencyAdd extends Component {
               className="mx-3"
               onChange={this.changeHandler}
             >
+              <option value="null" disabled selected>
+                --Please Select Currency--
+              </option>
               <option value="CNY">CNY</option>
               <option value="JPY">JPY</option>
               <option value="MYR">MYR</option>
