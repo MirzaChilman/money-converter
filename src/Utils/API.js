@@ -7,8 +7,14 @@ export default {
   fetchData: async (symbols) => {
     const defaultSymbols = '&symbols=IDR&symbols=EUR&symbols=GBP&symbols=SGD';
     const defaultBase = 'base=USD';
+    const response = await axios.get(`${URL}?${defaultBase}${defaultSymbols}`);
 
-    const response = await axios.get(`${URL}?${defaultBase}${defaultSymbols}${symbols || ''}`);
+    return response;
+  },
+  fetchSingleData: async (symbols) => {
+    const defaultBase = 'base=USD';
+    const response = await axios.get(`${URL}?${defaultBase}${symbols || ''}`);
+
     return response;
   },
 };

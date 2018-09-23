@@ -31,11 +31,7 @@ class CurrencyLists extends Component {
             return (
               <React.Fragment key={index}>
                 <CurrencyDetails {...data} />
-                <CurrencyDelete
-                  id={index}
-                  currencyCode={data.currencyCode}
-                  deleteHandler={this.deleteHandler}
-                />
+                <CurrencyDelete currencyCode={data.currencyCode} />
               </React.Fragment>
             );
           })

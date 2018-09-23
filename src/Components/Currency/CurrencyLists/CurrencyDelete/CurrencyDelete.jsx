@@ -12,16 +12,13 @@ class CurrencyDelete extends Component {
         <Button color="danger" onClick={() => this.props.deleteData(this.props.currencyCode)}>
           Delete
         </Button>
-        {/* <Button color="danger" onClick={() => this.props.deleteHandler(this.props.id)}>
-          Delete
-        </Button> */}
       </Card>
     );
   }
 }
 
 CurrencyDelete.propTypes = {
-  id: PropTypes.number.isRequired,
+  currencyCode: PropTypes.string.isRequired,
 };
 const mapStateToProps = state => ({
   currencyState: state.currencyData.currencyInfo,

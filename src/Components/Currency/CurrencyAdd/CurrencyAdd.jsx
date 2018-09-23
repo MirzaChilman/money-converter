@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Label, Input, Row, Col, Button } from 'reactstrap';
-import { fetchData } from '../../../Redux/Actions/currencyActions';
+import { fetchData, addData } from '../../../Redux/Actions/currencyActions';
 import { connect } from 'react-redux';
+
 class CurrencyAdd extends Component {
   state = {
     selectValue: '',
@@ -13,12 +14,11 @@ class CurrencyAdd extends Component {
     });
   };
 
-  addHandler = () => {
-    this.props.fetchData(`&symbols=${this.state.selectValue}`);
+  addHandler = async () => {
+    await this.props.addData(this.state.selectValue);
   };
 
   render() {
-    console.log(this.state.selectValue);
     return (
       <Row>
         <Col>
@@ -48,5 +48,5 @@ class CurrencyAdd extends Component {
 
 export default connect(
   null,
-  { fetchData },
+  { fetchData, addData },
 )(CurrencyAdd);

@@ -27,7 +27,7 @@ CurrencyDetails.propTypes = {
   currencyCode: PropTypes.string.isRequired,
   currencyRates: PropTypes.number.isRequired,
   baseState: PropTypes.string.isRequired,
-  moneyState: PropTypes.number.isRequired,
+  moneyState: PropTypes.any,
 };
 
 const mapStateToProps = state => ({

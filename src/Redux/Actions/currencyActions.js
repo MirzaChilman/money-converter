@@ -1,20 +1,11 @@
 /* eslint-disable */
 import { FETCH_DATA, CONVERT_MONEY, DELETE_DATA, ADD_DATA } from './actionCreators';
 import API from '../../Utils/API';
-
+import { objectToArray } from '../../Utils/Utils';
 export const fetchData = symbols => async dispatch => {
   const response = await API.fetchData(symbols);
-
-  // convert object of rates to
-  // array of rates
-  const arrRates = [];
-  for (const rates in response.data.rates) {
-    arrRates.push({
-      currencyCode: rates,
-      currencyRates: response.data.rates[rates],
-    });
-  }
-  response.data.rates = arrRates;
+  const convertedData = objectToArray(response.data.rates);
+  response.data.rates = convertedData;
 
   dispatch({
     type: FETCH_DATA,
@@ -37,8 +28,11 @@ export const deleteData = symbols => async dispatch => {
 };
 
 export const addData = symbols => async dispatch => {
+  const response = await API.fetchSingleData(`&symbols=${symbols}`);
+  const convertedData = objectToArray(response.data.rates);
+  response.data.rates = convertedData;
   dispatch({
     type: ADD_DATA,
-    payload: symbols,
+    payload: response.data.rates,
   });
 };

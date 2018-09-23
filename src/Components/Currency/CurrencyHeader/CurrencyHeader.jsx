@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Label, Input } from 'reactstrap';
 import { convertMoney } from '../../../Redux/Actions/currencyActions';
-import Utils from '../../../Utils/Utils';
+import { codeToText } from '../../../Utils/Utils';
 class CurrencyHeader extends Component {
   convertPrice = event => {
     this.props.convertMoney(event.target.value);
@@ -12,7 +12,7 @@ class CurrencyHeader extends Component {
     const { base } = this.props.currencyState;
     return (
       <React.Fragment>
-        <h3>{`${base}-${Utils.codeToText(base)}`}</h3>
+        <h3>{`${base}-${codeToText(base)}`}</h3>
         <Label>{base}</Label>
         <Input
           type="number"
