@@ -3,13 +3,12 @@ import axios from 'axios';
 
 const URL = 'https://api.exchangeratesapi.io/latest';
 
-/* export const fetchData = async (base, symbols) => {
-  const response = await axios.get(`${URL}?${base}${symbols}`);
-}; */
-
 export default {
-  fetchData: async (base, symbols) => {
-    const response = await axios.get(`${URL}?${base}${symbols}`);
+  fetchData: async (symbols) => {
+    const defaultSymbols = '&symbols=IDR&symbols=EUR&symbols=GBP&symbols=SGD';
+    const defaultBase = 'base=USD';
+
+    const response = await axios.get(`${URL}?${defaultBase}${defaultSymbols}${symbols || ''}`);
     return response;
   },
 };

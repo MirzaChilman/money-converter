@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Jumbotron } from 'reactstrap';
 import CurrencyHeader from './CurrencyHeader/CurrencyHeader';
 import CurrencyLists from './CurrencyLists/CurrencyLists';

@@ -27,11 +27,15 @@ class CurrencyLists extends Component {
         {this.state.isLoading ? (
           <Spinner />
         ) : (
-          rates.map(data => {
+          rates.map((data, index) => {
             return (
-              <React.Fragment key={data.currencyCode}>
+              <React.Fragment key={index}>
                 <CurrencyDetails {...data} />
-                <CurrencyDelete />
+                <CurrencyDelete
+                  id={index}
+                  currencyCode={data.currencyCode}
+                  deleteHandler={this.deleteHandler}
+                />
               </React.Fragment>
             );
           })

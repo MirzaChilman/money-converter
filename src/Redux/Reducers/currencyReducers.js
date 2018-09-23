@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FETCH_DATA, CONVERT_MONEY } from '../Actions/actionCreators';
+import { FETCH_DATA, CONVERT_MONEY, DELETE_DATA } from '../Actions/actionCreators';
 
 const initialState = {
   currencyInfo: [],
@@ -18,6 +18,16 @@ export default function(state = initialState, action) {
         ...state,
         money: action.payload,
       };
+    case DELETE_DATA:
+      let filteredData = state.currencyInfo.rates.filter(el => action.payload !== el.currencyCode);
+      state.currencyInfo.rates = filteredData;
+      let updatedData = Object.assign({ rates: filteredData }, state.currencyInfo);
+
+      return {
+        ...state,
+        currencyInfo: updatedData,
+      };
+
     default:
       return state;
   }
