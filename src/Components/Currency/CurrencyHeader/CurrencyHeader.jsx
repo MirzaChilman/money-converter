@@ -5,6 +5,9 @@ import { Label, Input } from 'reactstrap';
 import { convertMoney } from '../../../Redux/Actions/currencyActions';
 import { codeToText } from '../../../Utils/Utils';
 class CurrencyHeader extends Component {
+  componentDidMount() {
+    this.props.convertMoney(1);
+  }
   convertPrice = event => {
     this.props.convertMoney(event.target.value);
   };
@@ -18,6 +21,7 @@ class CurrencyHeader extends Component {
           type="number"
           className="form-control mb-2"
           bsSize="sm"
+          defaultValue="1"
           onChange={this.convertPrice}
           placeholder="Input your money here"
           style={{ width: '50%' }}

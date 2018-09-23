@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 class CurrencyAdd extends Component {
   state = {
-    selectValue: '',
+    selectValue: 'null',
   };
 
   changeHandler = e => {
@@ -29,9 +29,10 @@ class CurrencyAdd extends Component {
               name="currencyCode"
               id="currencyCodeId"
               className="mx-3"
+              value={this.state.selectValue}
               onChange={this.changeHandler}
             >
-              <option value="null" disabled selected>
+              <option value="null" disabled>
                 --Please Select Currency--
               </option>
               <option value="CNY">CNY</option>
@@ -48,7 +49,7 @@ class CurrencyAdd extends Component {
     );
   }
 }
-
+CurrencyAdd.defaultProps = {};
 export default connect(
   null,
   { fetchData, addData },
