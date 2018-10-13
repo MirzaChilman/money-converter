@@ -17,6 +17,6 @@ AirBnb Linter is used in this project to create a consistency code across file
 In order to minimize the bug, the applicaiton is using `prop-types` as its static typing
 
 ## Additional information
-The project is not optimized using any code-splitting nor lazy-load since it is unneeded at this point.
+The project is not optimized at all like using any code-splitting nor lazy-load since it is unneeded at this point.
 
 For any troubleshoot to use the application, kindly open issue on this repo.
